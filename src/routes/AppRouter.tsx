@@ -1,5 +1,7 @@
 import React, { useContext, useEffect } from 'react'
-import { BrowserRouter, Route, Routes } from 'react-router-dom'
+import { BrowserRouter, Navigate, Route, Routes } from 'react-router-dom'
+import Error from '../pages/error/Error'
+import Landing from '../pages/landing/Landing'
 import { AppContextInterface, AuthContext } from '../services/contexts/AuthContext'
 import AuthRouter from './AuthRouter'
 import DashboardRouter from './DashboardRouter'
@@ -29,12 +31,15 @@ const AppRouter:React.FC = () => {
             </PublicRoute>
           }
           />
-          <Route path="/*" element={
+          <Route path="/" element={ <Landing /> }/>
+          <Route path="/error" element={ <Error /> }/>
+          <Route path="/dashboard/*" element={
             <PrivateRoute>
               <DashboardRouter />
             </PrivateRoute>
           }
           />
+        <Route path='*' element={ <Navigate to="/error" /> }/>
         </Routes>
       </div>
     </BrowserRouter>

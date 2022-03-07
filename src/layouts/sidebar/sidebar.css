@@ -1,0 +1,8 @@
+.app__navbar {
+  border: 1px solid cyan;
+  position: fixed;
+  left: 0;
+  top:  0;
+  width: 240px;
+  height: 100vh;
+}

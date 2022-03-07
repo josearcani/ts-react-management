@@ -11,7 +11,7 @@ const PublicRoute = ({ children }: AuthContextProviderProps):any => {
 
   return !user.logged
     ? children
-    : <Navigate to="/" />
+    : <Navigate to="/dashboard" />
 }
 
 export default PublicRoute

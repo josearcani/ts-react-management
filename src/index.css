@@ -10,6 +10,7 @@
   --color-crimson: #F5EFDB;
   --color-grey: #AAAAAA;
   --color-white: #FFFFFF;
+  --color-golden-hover: #e5d8a8;
 }
 
 * {
@@ -22,6 +23,10 @@
 a {
   color: unset;
   text-decoration: none;
+}
+
+li {
+  list-style-type: none;
 }
 
 .slide-bottom {

@@ -1,0 +1,28 @@
+.app__sidebar-links-group {
+  font-size: 20px;
+  margin-bottom: .25rem;
+}
+
+.app__sidebar-links-item {
+  border-radius: 5px;
+  padding: .5rem;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  background: var(--color-crimson);
+  color: var(--color-gray);
+  transition: background 0.2s ease-in-out;
+}
+
+.app__sidebar-links-item:hover {
+  background: var(--color-golden);
+}
+
+.app__sidebar-links-item span {
+  margin-left: .4rem;
+}
+
+.isActive {
+  background: var(--color-golden);
+  color: var(--color-black);
+}

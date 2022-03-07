@@ -5,11 +5,11 @@ export const types = {
 }
 
 export interface State {
-  uid: string | null
+  id: string | null
   checking: boolean
   logged: boolean
-  firstname: string | null
-  lastname: string | null
+  nombre: string | null
+  apellido: string | null
   email: string | null
 }
 
@@ -24,8 +24,8 @@ export type AsyncAction = {
 export type User = {
   email: string;
   password: string;
-  firstname?: string
-  lastname?: string
+  nombre?: string
+  apellido?: string
 }
 
 type InnerAction =

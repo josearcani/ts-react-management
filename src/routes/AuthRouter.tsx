@@ -7,7 +7,7 @@ const AuthRouter:React.FC = () => {
   return (
     <>
       <Routes>
-        <Route path='/sesion' element={ <Login /> }/>
+        <Route path='/login' element={ <Login /> }/>
         <Route path='/registro' element={ <Register /> }/>
       </Routes>
     </>

@@ -116,7 +116,7 @@ const Register:React.FC = () => {
         <button className="custom__button" style={{ marginBottom: '.5rem' }} type="submit">
           Registarse
         </button>
-        <Link to="/auth/sesion" className="link">
+        <Link to="/auth/login" className="link">
           Ya tengo una cuenta
         </Link>
       </form>

@@ -24,7 +24,6 @@ export const logout = (): Logout => ({
 export const asyncActionHandlers: AsyncActionHandlers<Reducer<State, Action>, AsyncAction> = {
   LOGIN: ({ dispatch }) => async ({ email, password }) => {
     const { usuario:user, token, msg } = await fetchWithoutToken('auth/login', { email, password }, 'POST');
-    console.log(user,msg, token)
     if (user) {
       localStorage.setItem('token', token );
       dispatch({ type: types.login, payload: user});
@@ -34,7 +33,7 @@ export const asyncActionHandlers: AsyncActionHandlers<Reducer<State, Action>, As
   },
   REGISTER: ({ dispatch }) => async ({ firstname, lastname, email, password }) => {
     console.warn('For now you can use the test user provided');
-    const { user, token , msg } = await fetchWithoutToken('register', { firstname, lastname,  email, password}, 'POST')
+    const { usuario:user, token , msg } = await fetchWithoutToken('register', { firstname, lastname,  email, password}, 'POST');
     if (user) {
       localStorage.setItem('token', token );
       dispatch({ type: types.register, payload: user});

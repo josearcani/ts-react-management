@@ -1,8 +1,15 @@
 import React from 'react'
+import { Route, Routes } from 'react-router-dom'
+import Dashboard from '../pages/dashboard/Dashboard'
 
 const DashboardRouter: React.FC = () => {
   return (
-    <div>DashboardRouter</div>
+    <>
+      <Routes>
+        <Route path='/dashboard' element={ <Dashboard /> }/>
+        <Route path='/' element={ <Dashboard /> }/>
+      </Routes>
+    </>
   )
 }
 

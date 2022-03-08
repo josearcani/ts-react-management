@@ -1,0 +1,11 @@
+.app__dashboard-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  align-items: flex-start;
+}
+
+.app__dashboard-item {
+  flex-grow: 1;
+  margin-bottom: 1rem;
+}

@@ -23,7 +23,7 @@ const DashboardRouter: React.FC = () => {
             <Route path='/membresias' element={ <Membership /> }/>
             <Route path='/configuracion' element={ <Dashboard /> }/>
 
-            <Route path='*' element={ <Navigate to="/error" /> }/>
+            <Route path='*' element={ <Navigate to="/dashboard" /> }/>
           </Routes>
         </main>
         <Footer />

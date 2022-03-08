@@ -20,7 +20,8 @@ export const authReducer = (state: typeof initialState , action: Action):State =
         id: null,
         email: null,
         nombre: null,
-        apellido: null
+        apellido: null,
+        rol: null
       }
     default:
       return state

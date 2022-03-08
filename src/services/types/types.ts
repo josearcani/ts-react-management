@@ -11,6 +11,7 @@ export interface State {
   nombre: string | null
   apellido: string | null
   email: string | null
+  rol: string | null
 }
 
 export type AsyncAction = {

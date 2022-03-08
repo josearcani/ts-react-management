@@ -25,8 +25,9 @@ export const asyncActionHandlers: AsyncActionHandlers<Reducer<State, Action>, As
   LOGIN: ({ dispatch }) => async ({ email, password }) => {
     const { usuario:user, token, msg } = await fetchWithoutToken('auth/login', { email, password }, 'POST');
     if (user) {
+      const rol = user.rol?.split('_')[0];
       localStorage.setItem('token', token );
-      dispatch({ type: types.login, payload: user});
+      dispatch({ type: types.login, payload: { ...user, rol }});
       return
     }
     // return Swal.fire('Error', msg, 'error');
@@ -35,8 +36,9 @@ export const asyncActionHandlers: AsyncActionHandlers<Reducer<State, Action>, As
     console.warn('For now you can use the test user provided');
     const { usuario:user, token , msg } = await fetchWithoutToken('register', { firstname, lastname,  email, password}, 'POST');
     if (user) {
+      const rol = user.rol?.split('_')[0];
       localStorage.setItem('token', token );
-      dispatch({ type: types.register, payload: user});
+      dispatch({ type: types.register, payload: { ...user, rol }});
       return
     }
     return console.log(msg);

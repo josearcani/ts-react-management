@@ -12,13 +12,14 @@ import PublicRoute from './PublicRoute'
 const AppRouter:React.FC = () => {
 
   const { user, verifyToken } = useContext(AuthContext) as AppContextInterface;
-
+  console.log('========!"#=======');
+  console.log(user.checking);
   useEffect(() => {
     verifyToken()
   }, [verifyToken])
   
   if (user.checking) {
-    return <h1>Cargando</h1>
+    return <h1>Cargando.......</h1>
   }
 
   return (

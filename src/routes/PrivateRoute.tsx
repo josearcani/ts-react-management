@@ -7,8 +7,6 @@ type AuthContextProviderProps = {
 }
 const PrivateRoute = ({ children }: AuthContextProviderProps):any => {
   const { user } = useContext(AuthContext) as AppContextInterface;
-  console.log(user)
-
   return user.logged
     ? children
     : <Navigate to="/auth/login" />

@@ -5,7 +5,6 @@ type Action =
   | { type: string; payload: State };
 
 export const authReducer = (state: typeof initialState , action: Action):State => {
-  console.log(action.payload);
   switch (action.type) {
     case types.login:
       return {

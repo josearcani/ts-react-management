@@ -40,5 +40,10 @@ export const asyncActionHandlers: AsyncActionHandlers<Reducer<State, Action>, As
       return
     }
     return console.log(msg);
+  },
+  LOGOUT: ({ dispatch }) => async () => {
+    localStorage.clear();
+    dispatch({ type: types.logout })
+    return
   }
 };

@@ -10,8 +10,8 @@ export const types = {
   dashRemoveError: '[dash] Remove Error',
 
   dashToggle: '[dash] Toggle Toggle',
-  dashOpenToggle: '[dash] Toggle Open',
-  dashCloseToggle: '[dash] Toggle Close',
+  dashOpenModal: '[dash] Modal Open',
+  dashCloseModal: '[dash] Modal Close',
 
   dashLoadData: '[dash] Load Data',
   dashItemNew: '[dash] New Item',

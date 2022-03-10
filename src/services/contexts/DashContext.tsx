@@ -16,7 +16,7 @@ type DashContextProviderProps = {
 export const initialState:DashState = {
   checking: true,
   msgError: '',
-  toggle: true,
+  toggle: false,
   data: {}
 };
 

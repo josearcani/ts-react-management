@@ -36,15 +36,15 @@ export const dashReducer = (state: typeof initialState , action: Action):DashSta
         ...state,
         toggle: !state.toggle
       }
-    case types.dashOpenToggle:
-      return {
-        ...state,
-        toggle: false
-      }
-    case types.dashCloseToggle:
+    case types.dashOpenModal:
       return {
         ...state,
         toggle: true
+      }
+    case types.dashCloseModal:
+      return {
+        ...state,
+        toggle: false
       }
     default:
       return state

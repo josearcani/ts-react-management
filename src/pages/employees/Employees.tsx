@@ -1,17 +1,17 @@
 import React, { useContext, useEffect } from 'react'
 import Loader from '../../components/loader/Loader';
+import Table from '../../components/table/Table';
 import Widget from '../../components/widget/Widget'
-import { AppContextInterface, AuthContext } from '../../services/contexts/AuthContext';
 import DashContext, { DashContextInterface } from '../../services/contexts/DashContext';
-import { fetchWithToken } from '../../services/helpers/fetch'
-import { types } from '../../services/types/types';
+import { itemCounter } from '../../services/helpers/itemsCount';
 import './employees.css';
 
 const Employees = () => {
   const { dash, dispatch } = useContext(DashContext) as DashContextInterface;
-
+  const { data }:any = dash;
   console.log(dash)
-  
+  const items = data.rows
+
   useEffect(() => {
     dispatch({ type: 'GETALL', endpoint: 'empleados' });
   }, [])
@@ -19,8 +19,10 @@ const Employees = () => {
   if (dash.checking) {
     return (
       <Loader />
-    )
-  }
+      )
+    }
+
+  const itemsCount = itemCounter(items);
 
   return (
     <div className="app__dashboard">
@@ -30,69 +32,21 @@ const Employees = () => {
           <Widget
             title="Empleados"
           >
-            <p>Administradores: 1</p>
-            <p>Gerentes: 2</p>
-            <p>Instructores: 4</p>
-            <p>Total: 7</p>
+            {
+              itemsCount.map((item:any, i:number) => {
+                return (
+                  <p key={ i }>{item.item} : <span>{ item.counter }</span></p>
+                )
+              })
+            }
+            <p>TOTAL: { data.count }</p>
           </Widget>
         </div>
       </div>
       <div className="app__dashboard-row">
         <div className="app__dashboard-item">
-          <Widget
-            title="Tabla de Empleados"
-          >
-            {/* <div>
-              <form>
-                <label>
-                  Limite
-                  <input type="checkbox" />
-                </label>
-                <select>
-                  <option value="5">5</option>
-                  <option value="10">10</option>
-                  <option value="50">50</option>
-                  <option value="100">100</option>
-                </select>
-                <button>Obtener</button>
-              </form>
-            </div> */}
-            <table className="app__dashboard-table">
-              <thead>
-                <tr>
-                  <th>NOMBRE</th>
-                  <th>APELLIDO</th>
-                  <th>CORREO</th>
-                  <th>ROL</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <td>Alfreds</td>
-                  <td>Franciscog</td>
-                  <td>test1@gmail.com</td>
-                  <td>Admin</td>
-                </tr>
-                <tr>
-                  <td>Maria</td>
-                  <td>Mexica</td>
-                  <td>test2@gmail.com</td>
-                  <td>Manager</td>
-                </tr>
-                <tr>
-                  <td>German</td>
-                  <td>Mendoza</td>
-                  <td>test3@gmail.com</td>
-                  <td>Trainer</td>
-                </tr>
-                <tr>
-                  <td>Menzo</td>
-                  <td>Moctezuma</td>
-                  <td>test4@gmail.com</td>
-                  <td>Trainer</td>
-                </tr>
-              </tbody>
-            </table>
+          <Widget title="Tabla de Empleados">
+            <Table data={ data } />
           </Widget>
         </div>
       </div>

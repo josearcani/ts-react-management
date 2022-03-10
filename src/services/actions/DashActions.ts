@@ -8,8 +8,8 @@ import { Action, DashAsyncAction, DashState, types } from '../types/types';
 export const asyncActionHandlers: AsyncActionHandlers<Reducer<DashState, Action>, DashAsyncAction> = {
   GETALL: ({ dispatch }) => async ({ endpoint }) => {
     dispatch({ type: types.dashStartLoader });
-    const { empleados:data }:any = await fetchWithToken(endpoint);
-    console.log(data);
+    const { data }:any = await fetchWithToken(endpoint);
+    dispatch({ type: types.dashLoadData, payload: data });
     dispatch({ type: types.dashFinishLoader });
     return
     // return console.log(msg);

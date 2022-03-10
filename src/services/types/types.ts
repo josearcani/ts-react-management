@@ -12,6 +12,12 @@ export const types = {
   dashToggle: '[dash] Toggle Toggle',
   dashOpenToggle: '[dash] Toggle Open',
   dashCloseToggle: '[dash] Toggle Close',
+
+  dashLoadData: '[dash] Load Data',
+  dashItemNew: '[dash] New Item',
+  dashItemActive: '[dash] Active Item',
+  dashItemUpdate: '[dash] Update Item',
+  dashItemDelete: '[dash] Delete Item',
 }
 
 export interface State {

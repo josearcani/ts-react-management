@@ -1,4 +1,5 @@
 import React, { useContext, useEffect } from 'react'
+import AddNewFab from '../../components/addNewFab/AddNewFab';
 import Loader from '../../components/loader/Loader';
 import Table from '../../components/table/Table';
 import Widget from '../../components/widget/Widget'
@@ -26,6 +27,7 @@ const Employees = () => {
 
   return (
     <div className="app__dashboard">
+      <AddNewFab isEmployee={ true }/>
       <h2 style={{ marginBottom: 15 }}>Empleados</h2>
       <div className="app__dashboard-row">
         <div className="app__dashboard-item">

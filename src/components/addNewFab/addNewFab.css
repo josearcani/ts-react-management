@@ -1,0 +1,25 @@
+.app__fab {
+  position: absolute;
+  right: 1rem;
+  top: 1rem;
+  background-color: var(--color-golden-hover);
+  border: none;
+  padding: .5rem .8rem;
+  border-radius: 5px;
+  font-family: var(--font-base);
+  font-weight: bold;
+  font-size: 1rem;
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  transition: all .3s ease;
+  color: var(--color-black);
+}
+
+.app__fab span {
+  margin-left: .5rem;
+}
+
+.app__fab:hover {
+  background-color: var(--color-golden);
+}

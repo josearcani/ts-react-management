@@ -1,4 +1,5 @@
 import React, { useContext, useEffect } from 'react'
+import Loader from '../../components/loader/Loader';
 import Widget from '../../components/widget/Widget'
 import { AppContextInterface, AuthContext } from '../../services/contexts/AuthContext';
 import DashContext, { DashContextInterface } from '../../services/contexts/DashContext';
@@ -14,7 +15,12 @@ const Employees = () => {
   useEffect(() => {
     dispatch({ type: 'GETALL', endpoint: 'empleados' });
   }, [])
-  
+
+  if (dash.checking) {
+    return (
+      <Loader />
+    )
+  }
 
   return (
     <div className="app__dashboard">

@@ -54,7 +54,8 @@ export const AuthProvider = ({ children }: AuthContextProviderProps) => {
       if (resp?.usuario) {
         localStorage.setItem('token', resp.token );
         const { usuario:user } = resp;
-        dispatch({ type: types.login, payload: user });
+        const rol = user.rol?.split('_')[0];
+        dispatch({ type: types.login, payload: { ...user, rol }});
         return true
       } else {
         dispatch({ type: types.logout });

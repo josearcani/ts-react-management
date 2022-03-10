@@ -2,6 +2,16 @@ export const types = {
   login: '[auth] Login',
   logout: '[auth] Logout',
   register: '[auth] Register',
+
+  dashStartLoader: '[dash] StartLoader',
+  dashFinishLoader: '[dash] FinishLoader',
+
+  dashSetError: '[dash] Set Error',
+  dashRemoveError: '[dash] Remove Error',
+
+  dashToggle: '[dash] Toggle Toggle',
+  dashOpenToggle: '[dash] Toggle Open',
+  dashCloseToggle: '[dash] Toggle Close',
 }
 
 export interface State {
@@ -14,12 +24,24 @@ export interface State {
   rol: string | null
 }
 
+export interface DashState {
+  checking: boolean
+  toggle: boolean
+  msgError: string | null
+  data: Object | null
+}
+
 export type AsyncAction = {
   type: string;
   email?: string;
   password?: string;
   firstname?:string;
   lastname?:string;
+}
+
+export type DashAsyncAction = {
+  type: string;
+  endpoint: string
 }
 
 export type User = {
@@ -29,9 +51,23 @@ export type User = {
   apellido?: string
 }
 
-type InnerAction =
-  | { type: string; payload?: User | State; email?:string, password?:string }
+type InnerAction = {
+  type: string;
+  payload?: User | State;
+  email?:string,
+  password?:string,
+  endpoint?:string
+}
 
 export type OuterAction = { type: string };
 
 export type Action = InnerAction | OuterAction;
+
+type DashInnerAction = 
+  | { type: 'GETALL', endpoint?:string }
+  | { type: 'GETONE', endpoint?:string }
+
+type DashOuterAction = {
+  type: string 
+}
+export type DashAction = DashInnerAction | DashOuterAction

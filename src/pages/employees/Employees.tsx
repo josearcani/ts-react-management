@@ -1,20 +1,18 @@
 import React, { useContext, useEffect } from 'react'
 import Widget from '../../components/widget/Widget'
 import { AppContextInterface, AuthContext } from '../../services/contexts/AuthContext';
+import DashContext, { DashContextInterface } from '../../services/contexts/DashContext';
 import { fetchWithToken } from '../../services/helpers/fetch'
+import { types } from '../../services/types/types';
 import './employees.css';
 
 const Employees = () => {
+  const { dash, dispatch } = useContext(DashContext) as DashContextInterface;
 
-  const getData = async () => {
-    
-    const data = await fetchWithToken('empleados');
-    console.log(data);
-    
-  }
+  console.log(dash)
   
   useEffect(() => {
-    getData();
+    dispatch({ type: 'GETALL', endpoint: 'empleados' });
   }, [])
   
 

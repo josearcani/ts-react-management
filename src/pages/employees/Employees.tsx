@@ -11,7 +11,7 @@ import './employees.css';
 const Employees = () => {
   const { dash, dispatch } = useContext(DashContext) as DashContextInterface;
   const { data }:any = dash;
-  console.log(dash)
+  // console.log(dash)
   const items = data.rows
 
   useEffect(() => {

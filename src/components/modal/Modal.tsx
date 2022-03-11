@@ -1,5 +1,6 @@
 import React, { useContext, useState } from 'react'
 import ReactModal from 'react-modal';
+import { Navigate } from 'react-router-dom';
 import { useForm } from '../../hooks/useForm';
 import { AppContextInterface, AuthContext } from '../../services/contexts/AuthContext';
 import DashContext, { DashContextInterface } from '../../services/contexts/DashContext';

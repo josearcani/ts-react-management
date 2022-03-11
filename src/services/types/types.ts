@@ -43,6 +43,7 @@ export type AsyncAction = {
   password?: string;
   firstname?:string;
   lastname?:string;
+  rol?:string
 }
 
 export type DashAsyncAction = {
@@ -65,6 +66,7 @@ type InnerAction = {
   email?:string,
   password?:string,
   endpoint?:string
+  rol?:string
 }
 
 export type OuterAction = { type: string };

@@ -29,7 +29,7 @@ interface Employee {
 const Modal = () => {
 
   const { dash: { toggle }, dispatch } = useContext(DashContext) as DashContextInterface;
-  const { user:userAuth } = useContext(AuthContext) as AppContextInterface;
+  const { user:userAuth, dispatch:dispatchAuth } = useContext(AuthContext) as AppContextInterface;
   const [ role, setRole ] = useState<Roles>('VENTAS_ROL');
   let isAdmin = false;
   if (userAuth.rol == 'ADMIN') {
@@ -71,8 +71,15 @@ const Modal = () => {
       password: '',
     },
     onSubmit: () => {
-      console.log({...user, rol: role})
-      // dispatch({ type: 'LOGIN', email: user.email, password: user.password })
+      dispatchAuth({
+        type: 'REGISTER-EMPLOYEE',
+        firstname: user.firstname,
+        lastname: user.lastname,
+        email: user.email,
+        password: user.password,
+        rol: role
+      })
+      closeModal();
     },
   });
 

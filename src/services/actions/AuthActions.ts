@@ -32,16 +32,16 @@ export const asyncActionHandlers: AsyncActionHandlers<Reducer<State, Action>, As
     }
     // return Swal.fire('Error', msg, 'error');
   },
-  REGISTER: ({ dispatch }) => async ({ firstname, lastname, email, password }) => {
-    console.warn('For now you can use the test user provided');
-    const { usuario:user, token , msg } = await fetchWithoutToken('register', { firstname, lastname,  email, password}, 'POST');
-    if (user) {
-      const rol = user.rol?.split('_')[0];
+  REGISTER: ({ dispatch }) => async ({ firstname:nombre, lastname:apellido, email, password }) => {
+    const { data, token, msg } = await fetchWithoutToken('clientes', { nombre, apellido, email, password }, 'POST');
+    if (data) {
+      const rol = data.rol?.split('_')[0];
       localStorage.setItem('token', token );
-      dispatch({ type: types.register, payload: { ...user, rol }});
+      dispatch({ type: types.login, payload: { ...data, rol }});
       return
     }
     return console.log(msg);
+
   },
   LOGOUT: ({ dispatch }) => async () => {
     localStorage.clear();

@@ -1,6 +1,7 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import { Link } from 'react-router-dom';
 import { useForm } from '../../hooks/useForm';
+import { AppContextInterface, AuthContext } from '../../services/contexts/AuthContext';
 
 interface User {
   firstname: string;
@@ -10,6 +11,7 @@ interface User {
 }
 
 const Register:React.FC = () => {
+  const { dispatch } = useContext(AuthContext) as AppContextInterface;
   const { handleSubmit, handleChange, data: user, errors } = useForm<User>({
     validations: {
       firstname: {
@@ -44,7 +46,15 @@ const Register:React.FC = () => {
       email: 'bruno@test.com',
       password: '',
     },
-    onSubmit: () => alert(`firstname: ${user.firstname}\nlastname: ${user.lastname}\nemail: ${user.email}\n password: ${user.password}\n `),
+    onSubmit: () => {
+      dispatch({
+        type: 'REGISTER',
+        firstname: user.firstname,
+        lastname: user.lastname,
+        email: user.email,
+        password: user.password
+      })
+    }
   });
 
   return (

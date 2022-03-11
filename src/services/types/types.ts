@@ -60,6 +60,8 @@ export type User = {
 type InnerAction = {
   type: string;
   payload?: User | State;
+  firstname?:string,
+  lastname?:string,
   email?:string,
   password?:string,
   endpoint?:string

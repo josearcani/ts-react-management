@@ -9,7 +9,7 @@ export const fetchWithoutToken = async (endpoint:string, data?:Object, method:st
       .catch(error => error.msg)
   } else {
     return fetch(url, {
-      method: 'POST',
+      method,
       headers: {
         'Content-type': 'application/json'
       },

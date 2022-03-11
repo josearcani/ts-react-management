@@ -12,8 +12,7 @@ import PublicRoute from './PublicRoute'
 const AppRouter:React.FC = () => {
 
   const { user, verifyToken } = useContext(AuthContext) as AppContextInterface;
-  console.log('========!"#=======');
-  console.log(user.checking);
+  // console.log(user.checking);
   useEffect(() => {
     verifyToken()
   }, [verifyToken])

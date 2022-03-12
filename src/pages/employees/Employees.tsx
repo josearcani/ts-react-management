@@ -11,19 +11,16 @@ import './employees.css';
 const Employees = () => {
   const { dash, dashDispatch } = useContext(DashContext) as DashContextInterface;
   const { emplData }:any = dash;
-  // console.log(dash)
   const items = emplData.rows;
   
   useEffect(() => {
-    dashDispatch({ type: 'GETEMPL', endpoint: 'empleados' });
+    dashDispatch({ type: 'GETEMPL', endpoint: 'empleados?limit=1000' });
   }, [])
   
   if (dash.checking == true || items === undefined ) {
     return (<Loader />)
   }
-  
   const itemsCount = itemCounter(items);
-
   return (
     <div className="app__dashboard">
       <AddNewFab isEmployee={ true }/>

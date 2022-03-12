@@ -13,7 +13,9 @@ export const types = {
   dashOpenModal: '[dash] Modal Open',
   dashCloseModal: '[dash] Modal Close',
 
-  dashLoadData: '[dash] Load Data',
+  dashLoadEmplData: '[dash] Load Employees Data',
+  dashLoadCliData: '[dash] Load Clients Data',
+  dashLoadCrsData: '[dash] Load Courses Data',
   dashItemNew: '[dash] New Item',
   dashItemActive: '[dash] Active Item',
   dashItemUpdate: '[dash] Update Item',
@@ -34,7 +36,9 @@ export interface DashState {
   checking: boolean
   toggle: boolean
   msgError: string | null
-  data: Object | null
+  emplData: Object | null
+  clData: Object | null
+  crsData: Object | null
 }
 
 export type AsyncAction = {

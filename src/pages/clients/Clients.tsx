@@ -1,62 +1,54 @@
-import React from 'react'
+import React, { useContext, useEffect } from 'react'
+import AddNewFab from '../../components/addNewFab/AddNewFab'
+import Loader from '../../components/loader/Loader'
+import Modal from '../../components/modal/Modal'
+import Table from '../../components/table/Table'
 import Widget from '../../components/widget/Widget'
+import DashContext, { DashContextInterface } from '../../services/contexts/DashContext'
+import { itemCounter } from '../../services/helpers/itemsCount'
 
 const Clients = () => {
+  const { dash, dispatch } = useContext(DashContext) as DashContextInterface;
+
+  const { clData }:any = dash;
+  console.log(dash)
+  const items = clData.rows
+  useEffect(() => {
+    dispatch({ type: 'GETCLI', endpoint: 'clientes' });
+  }, [])
+
+  if (dash.checking == true || items === undefined ) {
+    return (<Loader />)
+  }
+  const itemsCount = itemCounter(items);
   return (
     <div className="app__dashboard">
-      <h2 style={{ marginBottom: 15 }}>Clientes</h2>
+      <AddNewFab isEmployee={ false }/>
+      <h2 style={{ marginBottom: 15 }}>Empleados</h2>
       <div className="app__dashboard-row">
         <div className="app__dashboard-item">
           <Widget
-            title="Clientes"
+            title="Empleados"
           >
-            <p>Hombres: 1</p>
-            <p>Mujeres: 4</p>
-            <p>No binarios: 4</p>
-            <p>Total: 7</p>
+            {
+              itemsCount.map((item:any, i:number) => {
+                return (
+                  <p key={ i }>{item.item} : <span>{ item.counter }</span></p>
+                )
+              })
+            }
+            <p>TOTAL: { clData.count }</p>
           </Widget>
         </div>
       </div>
       <div className="app__dashboard-row">
         <div className="app__dashboard-item">
-          <Widget
-            title="Tabla de Clientes"
-          >
-            <table className="app__dashboard-table">
-              <tr>
-                <th>Nombre</th>
-                <th>Apellido</th>
-                <th>Correo</th>
-                <th>Rol</th>
-              </tr>
-              <tr>
-                <td>Alfreds</td>
-                <td>Maria</td>
-                <td>German</td>
-                <td>Menzo</td>
-              </tr>
-              <tr>
-                <td>Moctezuma</td>
-                <td>Franciscog</td>
-                <td>Mexica</td>
-                <td>Mendoza</td>
-              </tr>
-              <tr>
-                <td>test1@gmail.com</td>
-                <td>test2@gmail.com</td>
-                <td>test3@gmail.com</td>
-                <td>test4@gmail.com</td>
-              </tr>
-              <tr>
-                <td>Admin</td>
-                <td>Manager</td>
-                <td>Trainer</td>
-                <td>Trainer</td>
-              </tr>
-            </table>
+          <Widget title="Tabla de Empleados">
+            <Table data={ clData } />
           </Widget>
         </div>
       </div>
+      <Modal />
     </div>
   )
 }

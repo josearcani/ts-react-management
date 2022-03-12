@@ -17,7 +17,9 @@ export const initialState:DashState = {
   checking: true,
   msgError: '',
   toggle: false,
-  data: {}
+  emplData: {},
+  clData: {},
+  crsData: {},
 };
 
 export const DashContext = createContext<DashContextInterface | null>(null);

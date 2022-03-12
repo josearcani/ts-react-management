@@ -5,6 +5,8 @@ import LinksGroup from './linksGroup/LinksGroup'
 import { Link } from 'react-router-dom';
 import './sidebar.css'
 import { AppContextInterface, AuthContext } from '../../services/contexts/AuthContext';
+import DashContext, { DashContextInterface } from '../../services/contexts/DashContext';
+import { types } from '../../services/types/types';
 
 const Sidebar = () => {
 

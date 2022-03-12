@@ -10,20 +10,18 @@ import './employees.css';
 
 const Employees = () => {
   const { dash, dispatch } = useContext(DashContext) as DashContextInterface;
-  const { data }:any = dash;
+  const { emplData }:any = dash;
   // console.log(dash)
-  const items = data.rows
-
+  const items = emplData.rows;
+  
   useEffect(() => {
-    dispatch({ type: 'GETALL', endpoint: 'empleados' });
+    dispatch({ type: 'GETEMPL', endpoint: 'empleados' });
   }, [])
-
-  if (dash.checking) {
-    return (
-      <Loader />
-      )
-    }
-
+  
+  if (dash.checking == true || items === undefined ) {
+    return (<Loader />)
+  }
+  
   const itemsCount = itemCounter(items);
 
   return (
@@ -42,14 +40,14 @@ const Employees = () => {
                 )
               })
             }
-            <p>TOTAL: { data.count }</p>
+            <p>TOTAL: { emplData.count }</p>
           </Widget>
         </div>
       </div>
       <div className="app__dashboard-row">
         <div className="app__dashboard-item">
           <Widget title="Tabla de Empleados">
-            <Table data={ data } />
+            <Table data={ emplData } />
           </Widget>
         </div>
       </div>

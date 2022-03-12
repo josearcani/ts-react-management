@@ -1,6 +1,5 @@
-import React, { useContext, useState } from 'react'
+import { useContext, useState } from 'react'
 import ReactModal from 'react-modal';
-import { Navigate } from 'react-router-dom';
 import { useForm } from '../../hooks/useForm';
 import { AppContextInterface, AuthContext } from '../../services/contexts/AuthContext';
 import DashContext, { DashContextInterface } from '../../services/contexts/DashContext';
@@ -27,7 +26,7 @@ interface Employee {
   password: string;
 }
 
-const Modal = () => {
+const Modal = ({ isEmployee }:{ isEmployee:boolean }) => {
 
   const { dash: { toggle }, dashDispatch } = useContext(DashContext) as DashContextInterface;
   const { user:userAuth, authDispatch } = useContext(AuthContext) as AppContextInterface;
@@ -72,14 +71,24 @@ const Modal = () => {
       password: '',
     },
     onSubmit: () => {
-      authDispatch({
-        type: 'REGISTER-EMPLOYEE',
-        firstname: user.firstname,
-        lastname: user.lastname,
-        email: user.email,
-        password: user.password,
-        rol: role
-      })
+      if (isEmployee){
+        authDispatch({
+          type: 'REGISTER-EMPLOYEE',
+          firstname: user.firstname,
+          lastname: user.lastname,
+          email: user.email,
+          password: user.password,
+          rol: role
+        })
+      } else {
+        authDispatch({
+          type: 'REGISTER-CLIENT',
+          firstname: user.firstname,
+          lastname: user.lastname,
+          email: user.email,
+          password: user.password,
+        })
+      }
       closeModal();
     },
   });
@@ -105,7 +114,11 @@ const Modal = () => {
         className="app__modal-form"
         onSubmit={handleSubmit}
       >
-        <h1>Añadir empleado</h1>
+        {
+          isEmployee
+          ? (<h1>Añadir empleado</h1>)
+          : (<h1>Añadir cliente</h1>)
+        }
         <div className="app__input-container">
           <label className="app__input-label" htmlFor="firstname">Nombres</label>
           <input
@@ -166,16 +179,19 @@ const Modal = () => {
           <i className="fa fa-key"></i>
           {errors.password && <span className="app__input--error">{errors.password}</span>}
         </div>
-        <div className="app__input-container">
-          <label className="app__input-label" htmlFor="rol">Rol</label>
-          <select name="rol" id="rol" onChange={ rolChange } value={ role }>
-            { isAdmin && (<option value="ADMIN_ROL">Admin</option>)}
-            { isAdmin && (<option value="MANAGER_ROL">Manager</option>)}
-            <option value="TRAINER_ROL">Trainer</option>
-            <option value="VENTAS_ROL">Ventas</option>
-          </select>
-        </div>
-
+        {
+          isEmployee && (
+            <div className="app__input-container">
+              <label className="app__input-label" htmlFor="rol">Rol</label>
+              <select name="rol" id="rol" onChange={ rolChange } value={ role }>
+                { isAdmin && (<option value="ADMIN_ROL">Admin</option>)}
+                { isAdmin && (<option value="MANAGER_ROL">Manager</option>)}
+                <option value="TRAINER_ROL">Trainer</option>
+                <option value="VENTAS_ROL">Ventas</option>
+              </select>
+            </div>
+          )
+        }
         <button
           className="custom__button"
           style={{ marginBottom: '.5rem' }}

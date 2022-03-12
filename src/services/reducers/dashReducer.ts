@@ -5,7 +5,6 @@ type Action =
   | { type: string; payload: string | null };
 
 export const dashReducer = (state: typeof initialState , action: Action):DashState => {
-  console.log(state);
   switch (action.type) {
     case types.dashLoadEmplData:
       return {

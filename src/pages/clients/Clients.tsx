@@ -14,7 +14,7 @@ const Clients = () => {
   console.log(dash)
   const items = clData.rows
   useEffect(() => {
-    dashDispatch({ type: 'GETCLI', endpoint: 'clientes' });
+    dashDispatch({ type: 'GETCLI', endpoint: 'clientes?limit=1000' });
   }, [])
 
   if (dash.checking == true || items === undefined ) {
@@ -24,11 +24,11 @@ const Clients = () => {
   return (
     <div className="app__dashboard">
       <AddNewFab isEmployee={ false }/>
-      <h2 style={{ marginBottom: 15 }}>Empleados</h2>
+      <h2 style={{ marginBottom: 15 }}>Clientes</h2>
       <div className="app__dashboard-row">
         <div className="app__dashboard-item">
           <Widget
-            title="Empleados"
+            title="Clientes"
           >
             {
               itemsCount.map((item:any, i:number) => {
@@ -48,7 +48,7 @@ const Clients = () => {
           </Widget>
         </div>
       </div>
-      <Modal />
+      <Modal isEmployee={ false } />
     </div>
   )
 }

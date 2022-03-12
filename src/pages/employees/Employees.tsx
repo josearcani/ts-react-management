@@ -51,7 +51,7 @@ const Employees = () => {
           </Widget>
         </div>
       </div>
-      <Modal />
+      <Modal isEmployee={ true } />
     </div>
   )
 }

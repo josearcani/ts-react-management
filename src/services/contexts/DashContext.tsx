@@ -6,7 +6,7 @@ import { Action, DashAction, DashState } from '../types/types'
 
 export interface DashContextInterface {
   dash: DashState
-  dispatch: any
+  dashDispatch: any
 }
 
 type DashContextProviderProps = {
@@ -30,7 +30,7 @@ export const DashProvider = ({ children }:DashContextProviderProps ) => {
 
   const dashContext:DashContextInterface = {
     dash,
-    dispatch,
+    dashDispatch: dispatch,
   }
 
   return (

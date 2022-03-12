@@ -8,14 +8,14 @@ import { Link } from 'react-router-dom';
 
 const Header:React.FC = () => {
   const [toggleMenu, setToggleMenu] = useState(false);
-  const { dispatch, user } = useContext(AuthContext) as AppContextInterface;
+  const { authDispatch, user } = useContext(AuthContext) as AppContextInterface;
 
   const toggle = () => {
     setToggleMenu(!toggleMenu)
   }
 
   const handleLogout = () => {
-    dispatch({ type: 'LOGOUT' })
+    authDispatch({ type: 'LOGOUT' })
   }
 
   return (

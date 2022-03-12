@@ -7,7 +7,7 @@ import { State, Action, types } from '../types/types'
 
 export interface AppContextInterface {
   user: State,
-  dispatch: Dispatch<Action>,
+  authDispatch: Dispatch<Action>,
   verifyToken: () => {},
 }
 
@@ -65,7 +65,7 @@ export const AuthProvider = ({ children }: AuthContextProviderProps) => {
 
     const appContext: AppContextInterface = {
       user,
-      dispatch,
+      authDispatch: dispatch,
       verifyToken,
     }
 

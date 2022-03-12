@@ -9,13 +9,13 @@ import { itemCounter } from '../../services/helpers/itemsCount';
 import './employees.css';
 
 const Employees = () => {
-  const { dash, dispatch } = useContext(DashContext) as DashContextInterface;
+  const { dash, dashDispatch } = useContext(DashContext) as DashContextInterface;
   const { emplData }:any = dash;
   // console.log(dash)
   const items = emplData.rows;
   
   useEffect(() => {
-    dispatch({ type: 'GETEMPL', endpoint: 'empleados' });
+    dashDispatch({ type: 'GETEMPL', endpoint: 'empleados' });
   }, [])
   
   if (dash.checking == true || items === undefined ) {

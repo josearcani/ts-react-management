@@ -8,13 +8,13 @@ import DashContext, { DashContextInterface } from '../../services/contexts/DashC
 import { itemCounter } from '../../services/helpers/itemsCount'
 
 const Clients = () => {
-  const { dash, dispatch } = useContext(DashContext) as DashContextInterface;
+  const { dash, dashDispatch } = useContext(DashContext) as DashContextInterface;
 
   const { clData }:any = dash;
   console.log(dash)
   const items = clData.rows
   useEffect(() => {
-    dispatch({ type: 'GETCLI', endpoint: 'clientes' });
+    dashDispatch({ type: 'GETCLI', endpoint: 'clientes' });
   }, [])
 
   if (dash.checking == true || items === undefined ) {

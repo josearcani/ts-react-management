@@ -11,7 +11,7 @@ interface User {
 
 const Login:React.FC = () => {
 
-  const { dispatch } = useContext(AuthContext) as AppContextInterface;
+  const { authDispatch } = useContext(AuthContext) as AppContextInterface;
   const [rememberMe, setRememberMe] = useState<boolean>(false);
   const { handleSubmit, handleChange, data: user, errors } = useForm<User>({
     validations: {
@@ -34,7 +34,7 @@ const Login:React.FC = () => {
       password: 'secret',
     },
     onSubmit: () => {
-      dispatch({ type: 'LOGIN', email: user.email, password: user.password })
+      authDispatch({ type: 'LOGIN', email: user.email, password: user.password })
     },
   });
 

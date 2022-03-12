@@ -11,7 +11,7 @@ interface User {
 }
 
 const Register:React.FC = () => {
-  const { dispatch } = useContext(AuthContext) as AppContextInterface;
+  const { authDispatch } = useContext(AuthContext) as AppContextInterface;
   const { handleSubmit, handleChange, data: user, errors } = useForm<User>({
     validations: {
       firstname: {
@@ -47,7 +47,7 @@ const Register:React.FC = () => {
       password: '',
     },
     onSubmit: () => {
-      dispatch({
+      authDispatch({
         type: 'REGISTER',
         firstname: user.firstname,
         lastname: user.lastname,

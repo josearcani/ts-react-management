@@ -6,12 +6,12 @@ import './addNewFab.css';
 
 const AddNewFab = ({ isEmployee }:{ isEmployee:boolean }) => {
 
-  const { dispatch } = useContext(DashContext) as DashContextInterface;
+  const { dashDispatch } = useContext(DashContext) as DashContextInterface;
 
   return (
     <button
       className="app__fab"
-      onClick={ () => dispatch({ type: types.dashOpenModal })}
+      onClick={ () => dashDispatch({ type: types.dashOpenModal })}
     >
       <RiUserAddLine style={{ fontSize: 15 }} />
       {

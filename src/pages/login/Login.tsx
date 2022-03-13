@@ -89,7 +89,7 @@ const Login:React.FC = () => {
           Entrar
         </button>
         <Link to="/auth/registro" className="link">
-          Crear nuevo usuario
+          No tienes una cuenta?
         </Link>
       </form>
     </div>

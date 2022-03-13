@@ -7,9 +7,15 @@ type AuthContextProviderProps = {
 }
 const PublicRoute = ({ children }: AuthContextProviderProps):any => {
   const { user } = useContext(AuthContext) as AppContextInterface;
+  let home:string;
+  if (user.rol === 'CLIENTE') {
+    home = '/cliente';
+  } else {
+    home = '/dashboard';
+  }
   return !user.logged
     ? children
-    : <Navigate to="/dashboard" />
+    : <Navigate to={ home } />
 }
 
 export default PublicRoute

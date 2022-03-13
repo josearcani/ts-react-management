@@ -4,6 +4,7 @@ import Error from '../pages/error/Error'
 import Landing from '../pages/landing/Landing'
 import { AppContextInterface, AuthContext } from '../services/contexts/AuthContext'
 import AuthRouter from './AuthRouter'
+import DashboardClientRouter from './DashboardClientRouter'
 import DashboardRouter from './DashboardRouter'
 import PrivateRoute from './PrivateRoute'
 import PublicRoute from './PublicRoute'
@@ -35,6 +36,12 @@ const AppRouter:React.FC = () => {
           <Route path="/dashboard/*" element={
             <PrivateRoute>
               <DashboardRouter />
+            </PrivateRoute>
+          }
+          />
+          <Route path="/cliente/*" element={
+            <PrivateRoute>
+              <DashboardClientRouter />
             </PrivateRoute>
           }
           />

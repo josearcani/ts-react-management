@@ -8,17 +8,9 @@ const Membership = () => {
       <div className="app__dashboard-row">
         <div className="app__dashboard-item">
           <Widget
-            title="Otorgar membresia"
+            title="En construcción"
           >
-            <p>Hombres: 1</p>
-            <p>Mujeres: 4</p>
-            <p>No binarios: 4</p>
-            <p>Total: 7</p>
           </Widget>
-        </div>
-      </div>
-      <div className="app__dashboard-row">
-        <div className="app__dashboard-item">
         </div>
       </div>
     </div>

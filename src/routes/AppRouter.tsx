@@ -31,7 +31,6 @@ const AppRouter:React.FC = () => {
             </PublicRoute>
           }
           />
-          <Route path="/" element={ <Landing /> }/>
           <Route path="/error" element={ <Error /> }/>
           <Route path="/dashboard/*" element={
             <PrivateRoute>
@@ -39,7 +38,7 @@ const AppRouter:React.FC = () => {
             </PrivateRoute>
           }
           />
-        <Route path='*' element={ <Navigate to="/error" /> }/>
+        <Route path='*' element={ <Navigate to="/auth/login" /> }/>
         </Routes>
       </div>
     </BrowserRouter>

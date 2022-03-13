@@ -8,6 +8,7 @@ import Dashboard from '../pages/dashboard/Dashboard'
 import Employees from '../pages/employees/Employees'
 import Membership from '../pages/membership/Membership'
 import Profile from '../pages/profile/Profile'
+import Settings from '../pages/settings/Settings'
 import './DashboardRouter.css'
 
 const DashboardRouter: React.FC = () => {
@@ -25,7 +26,7 @@ const DashboardRouter: React.FC = () => {
             <Route path='/empleados' element={ <Employees /> }/>
             <Route path='/clientes' element={ <Clients /> }/>
             <Route path='/membresias' element={ <Membership /> }/>
-            <Route path='/configuracion' element={ <Dashboard /> }/>
+            <Route path='/configuracion' element={ <Settings /> }/>
             <Route path='*' element={ <Navigate to="/dashboard" /> }/>
           </Routes>
         </main>

@@ -14,7 +14,7 @@ export const dashReducer = (state: typeof initialState , action: Action):DashSta
     case types.dashLoadCliData:
       return {
         ...state,
-        clData: action.payload,
+        cliData: action.payload,
       }
     case types.dashLoadCrsData:
       return {

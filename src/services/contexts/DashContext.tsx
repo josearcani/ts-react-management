@@ -18,7 +18,7 @@ export const initialState:DashState = {
   msgError: '',
   toggle: false,
   emplData: {},
-  clData: {},
+  cliData: {},
   crsData: {},
 };
 

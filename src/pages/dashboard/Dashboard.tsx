@@ -7,18 +7,19 @@ import './dashboard.css'
 
 const Dashboard = () => {
   const { dash, dashDispatch } = useContext(DashContext) as DashContextInterface;
-  const { emplData }:any = dash;
-  const items = emplData.rows;
-  console.log(dash);
+  const { emplData, cliData, crsData }:any = dash;
+  const itemsEmpl = emplData.rows;
+  const itemsCli = cliData.rows;
+  const itemsCrs = crsData.rows;
   useEffect(() => {
     dashDispatch({ type: 'GETALL', endpoint: 'empleados/clientes/cursos' });
   }, [])
   
-  if (dash.checking == true || items === undefined ) {
+  if (dash.checking == true || itemsEmpl === undefined || itemsCli === undefined || itemsCrs === undefined ) {
     return (<Loader />)
   }
-  const itemsCount = itemCounter(items);
-
+  const itemsCountEmpl = itemCounter(itemsEmpl);
+  
   return (
     <div className="app__dashboard">
       <h2 style={{ marginBottom: 15 }}>Dashboard</h2>
@@ -28,7 +29,7 @@ const Dashboard = () => {
             title="Total de empleados"
           >
             {
-              itemsCount.map((item:any, i:number) => {
+              itemsCountEmpl.map((item:any, i:number) => {
                 return (
                   <p key={ i }>{item.item} : <span>{ item.counter }</span></p>
                 )
@@ -41,19 +42,14 @@ const Dashboard = () => {
           <Widget
             title="Total de clientes"
           >
-            <p>Varones 5</p>
-            <p>Mujeres 5</p>
-            <p>No binarios 5</p>
-            <p>Total 15</p>
+            <p>TOTAL: { cliData.count }</p>
           </Widget>
         </div>
         <div className="app__dashboard-item">
           <Widget
             title="Total de Cursos"
           >
-            <p>Activos 2</p>
-            <p>Inactivos 1</p>
-            <p>Total 3</p>
+            <p>TOTAL: { crsData.count }</p>
           </Widget>
         </div>
       </div>

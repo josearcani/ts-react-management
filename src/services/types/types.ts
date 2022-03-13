@@ -37,7 +37,7 @@ export interface DashState {
   toggle: boolean
   msgError: string | null
   emplData: Object | null
-  clData: Object | null
+  cliData: Object | null
   crsData: Object | null
 }
 

@@ -8,8 +8,8 @@ import DashContext, { DashContextInterface } from '../../services/contexts/DashC
 
 const Clients = () => {
   const { dash, dashDispatch } = useContext(DashContext) as DashContextInterface;
-  const { clData }:any = dash;
-  const items = clData.rows
+  const { cliData }:any = dash;
+  const items = cliData.rows
   useEffect(() => {
     dashDispatch({ type: 'GETCLI', endpoint: 'clientes?limit=1000' });
   }, [])
@@ -26,14 +26,14 @@ const Clients = () => {
           <Widget
             title="Clientes"
           >
-            <p>TOTAL: { clData.count }</p>
+            <p>TOTAL: { cliData.count }</p>
           </Widget>
         </div>
       </div>
       <div className="app__dashboard-row">
         <div className="app__dashboard-item">
           <Widget title="Tabla de Empleados">
-            <Table data={ clData } />
+            <Table data={ cliData } />
           </Widget>
         </div>
       </div>

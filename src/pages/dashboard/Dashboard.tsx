@@ -1,8 +1,24 @@
-import React from 'react'
+import React, { useContext, useEffect } from 'react'
+import Loader from '../../components/loader/Loader';
 import Widget from '../../components/widget/Widget'
+import DashContext, { DashContextInterface } from '../../services/contexts/DashContext';
+import { itemCounter } from '../../services/helpers/itemsCount';
 import './dashboard.css'
 
 const Dashboard = () => {
+  const { dash, dashDispatch } = useContext(DashContext) as DashContextInterface;
+  const { emplData }:any = dash;
+  const items = emplData.rows;
+  console.log(dash);
+  useEffect(() => {
+    dashDispatch({ type: 'GETALL', endpoint: 'empleados/clientes/cursos' });
+  }, [])
+  
+  if (dash.checking == true || items === undefined ) {
+    return (<Loader />)
+  }
+  const itemsCount = itemCounter(items);
+
   return (
     <div className="app__dashboard">
       <h2 style={{ marginBottom: 15 }}>Dashboard</h2>
@@ -11,10 +27,14 @@ const Dashboard = () => {
           <Widget
             title="Total de empleados"
           >
-            <p>Administradores: 1</p>
-            <p>Gerentes: 2</p>
-            <p>Instructores: 4</p>
-            <p>Total: 7</p>
+            {
+              itemsCount.map((item:any, i:number) => {
+                return (
+                  <p key={ i }>{item.item} : <span>{ item.counter }</span></p>
+                )
+              })
+            }
+            <p>TOTAL: { emplData.count }</p>
           </Widget>
         </div>
         <div className="app__dashboard-item">

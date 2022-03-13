@@ -30,6 +30,20 @@ export const asyncActionHandlers: AsyncActionHandlers<Reducer<DashState, Action>
     return
     // return console.log(msg);
   },
+  GETALL: ({ dispatch }) => async ({ endpoint }) => {
+    dispatch({ type: types.dashStartLoader });
+    const [{ data:emplData },{ data:cliData },{ data:crsData }]:any = await Promise.all([
+      fetchWithToken('empleados?limit=1000'),
+      fetchWithToken('clientes?limit=1000'),
+      fetchWithToken('cursos?limit=1000')
+    ]);
+    dispatch({ type: types.dashLoadEmplData, payload: emplData });
+    dispatch({ type: types.dashLoadCliData, payload: cliData });
+    dispatch({ type: types.dashLoadCrsData, payload: crsData });
+    dispatch({ type: types.dashFinishLoader });
+    return
+    // return console.log(msg);
+  },
   GETONE: ({ dispatch }) => async () => {
     console.log('GET ONE')
     // dispatch({ type: types.logout })

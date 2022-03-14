@@ -16,6 +16,7 @@ export const types = {
   dashLoadEmplData: '[dash] Load Employees Data',
   dashLoadCliData: '[dash] Load Clients Data',
   dashLoadCrsData: '[dash] Load Courses Data',
+  dashClearData: '[dash] Clear Data',
   dashItemNew: '[dash] New Item',
   dashItemActive: '[dash] Active Item',
   dashItemUpdate: '[dash] Update Item',

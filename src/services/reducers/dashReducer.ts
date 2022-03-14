@@ -56,6 +56,13 @@ export const dashReducer = (state: typeof initialState , action: Action):DashSta
         ...state,
         toggle: false
       }
+    case types.dashClearData:
+      return {
+        ...state,
+        emplData: {},
+        cliData: {},
+        crsData: {},
+      }
     default:
       return state
   }

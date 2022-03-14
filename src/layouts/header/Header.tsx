@@ -1,21 +1,29 @@
 import React, { useContext, useState } from 'react';
-import { RiMenu3Line, RiArrowDropDownLine, RiUser3Line, RiTodoLine, RiLogoutBoxLine, RiMessage2Line } from 'react-icons/ri';
-import './header.css'
-import { AppContextInterface, AuthContext } from '../../services/contexts/AuthContext';
-import userImg from "../../assets/images/user.svg";
 import { Link } from 'react-router-dom';
-
+import { RiMenu3Line, RiArrowDropDownLine, RiUser3Line, RiTodoLine, RiLogoutBoxLine, RiMessage2Line } from 'react-icons/ri';
+import { AppContextInterface, AuthContext } from '../../services/contexts/AuthContext';
+import DashContext, { DashContextInterface } from '../../services/contexts/DashContext';
+import userImg from "../../assets/images/user.svg";
+import { types } from '../../services/types/types';
+import './header.css'
 
 const Header:React.FC = () => {
   const [toggleMenu, setToggleMenu] = useState(false);
   const { authDispatch, user } = useContext(AuthContext) as AppContextInterface;
-
+  const { dashDispatch } = useContext(DashContext) as DashContextInterface;
+  let home:string;
+  if (user.rol === 'CLIENTE') {
+    home = '/cliente'
+  } else {
+    home = '/admin'
+  }
   const toggle = () => {
     setToggleMenu(!toggleMenu)
   }
 
   const handleLogout = () => {
-    authDispatch({ type: 'LOGOUT' })
+    dashDispatch({ type: types.dashClearData });
+    authDispatch({ type: 'LOGOUT' });
   }
 
   return (
@@ -40,19 +48,19 @@ const Header:React.FC = () => {
         {
           toggleMenu && (
             <div className="app__header-menu_container">
-              <Link to={`/dashboard/${ user.id }`}>
+              <Link to={`${ home }/${ user.id }`}>
                 <div className="dropdown-item">
                     <RiUser3Line />
                     <span>Perfil</span>
                 </div>
               </Link>
-              <Link to={`/dashboard/${ user.id }/cursos`}>
+              <Link to={`${ home }/${ user.id }/cursos`}>
                 <div className="dropdown-item">
                   <RiTodoLine />
                   <span>Cursos</span>
                 </div>
               </Link>
-              <Link to={`/dashboard/${ user.id }/mensajes`}>
+              <Link to={`${ home }/${ user.id }/mensajes`}>
                 <div className="dropdown-item">
                   <RiMessage2Line />
                   <span>Mensajes</span>

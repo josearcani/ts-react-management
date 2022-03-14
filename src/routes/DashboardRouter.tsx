@@ -27,6 +27,7 @@ const DashboardRouter: React.FC = () => {
             <Route path='/empleados' element={ <Employees /> }/>
             <Route path='/clientes' element={ <Clients /> }/>
             <Route path='/cursos' element={ <Courses /> }/>
+            <Route path='/cursos/:id' element={ <Profile /> }/>
             <Route path='/membresias' element={ <Membership /> }/>
             <Route path='/configuracion' element={ <Settings /> }/>
             <Route path='*' element={ <Navigate to="/admin" /> }/>

@@ -1,5 +1,6 @@
 import React, { useContext, useEffect } from 'react'
 import { RiRefreshLine } from 'react-icons/ri';
+import { Link } from 'react-router-dom';
 import Loader from '../../components/loader/Loader';
 import Widget from '../../components/widget/Widget'
 import DashContext, { DashContextInterface } from '../../services/contexts/DashContext';
@@ -57,11 +58,12 @@ const Courses = () => {
                   <div className="app__courses-instructor">
                     <p>Instructor: {item.empleado.nombre} {item.empleado.apellido}</p>
                   </div>
-                  <button
+                  <Link
                     className="app__courses-btn"
+                    to={`${item.id}`}
                   >
                     <RiRefreshLine /> <span>Actualizar</span> 
-                  </button>
+                  </Link>
                 </Widget>
               </div>
             ))

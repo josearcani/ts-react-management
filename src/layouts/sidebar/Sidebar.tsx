@@ -1,5 +1,5 @@
 import React, { useContext } from 'react'
-import { RiFolderOpenLine, RiFolderUserLine, RiHome2Line, RiSettings3Line, RiUserStarFill, RiVipCrown2Line } from 'react-icons/ri'
+import { RiFolderOpenLine, RiFolderUserLine, RiHome2Line, RiProfileLine, RiSettings3Line, RiUserStarFill, RiVipCrown2Line } from 'react-icons/ri'
 import { CgGym } from "react-icons/cg";
 import LinksGroup from './linksGroup/LinksGroup'
 import { Link } from 'react-router-dom';
@@ -13,7 +13,7 @@ const Sidebar = () => {
   if (user.rol === 'CLIENTE') {
     home = '/cliente'
   } else {
-    home = '/dashboard'
+    home = '/admin'
   }
   return (
     <div className="app__navbar">
@@ -36,7 +36,7 @@ const Sidebar = () => {
           user.rol === 'ADMIN' || user.rol === 'MANAGER'
           ? <>
               <LinksGroup
-                link="/dashboard/empleados"
+                link={`${ home }/empleados`}
                 iconName={ <RiUserStarFill /> }
                 activeItem=""
                 isHeader
@@ -44,12 +44,20 @@ const Sidebar = () => {
                 header="Empleados"
               />
               <LinksGroup
-                link="/dashboard/clientes"
+                link={`${ home }/clientes`}
                 iconName={ <RiFolderUserLine /> }
                 activeItem=""
                 isHeader
                 index="clients"
                 header="Lista de clientes"
+              />
+              <LinksGroup
+                link={`${ home }/cursos`}
+                iconName={ <RiProfileLine /> }
+                activeItem=""
+                isHeader
+                index="courses"
+                header="Lista de cursos"
               />
             </>
           : null
@@ -75,7 +83,7 @@ const Sidebar = () => {
           header="Membresias"
         />
         <LinksGroup
-          link="/dashboard/configuracion"
+          link={`${ home }/configuracion`}
           iconName={ <RiSettings3Line /> }
           activeItem=""
           isHeader

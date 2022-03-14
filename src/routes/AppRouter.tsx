@@ -33,7 +33,7 @@ const AppRouter:React.FC = () => {
           }
           />
           <Route path="/error" element={ <Error /> }/>
-          <Route path="/dashboard/*" element={
+          <Route path="/admin/*" element={
             <PrivateRoute>
               <DashboardRouter />
             </PrivateRoute>

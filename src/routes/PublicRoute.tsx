@@ -11,7 +11,7 @@ const PublicRoute = ({ children }: AuthContextProviderProps):any => {
   if (user.rol === 'CLIENTE') {
     home = '/cliente';
   } else {
-    home = '/dashboard';
+    home = '/admin';
   }
   return !user.logged
     ? children

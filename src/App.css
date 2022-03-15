@@ -108,6 +108,14 @@
   width: 45px;
 }
 
+.danger {
+  background-color: var(--color-danger);
+  color: var(--color-white);
+}
+.danger:hover {
+  background-color: var(--color-danger-hover);
+}
+
 .link:hover {
   text-decoration: underline;
 }

@@ -11,6 +11,8 @@
   --color-grey: #AAAAAA;
   --color-white: #FFFFFF;
   --color-golden-hover: #e5d8a8;
+  --color-danger: #f34c4c;
+  --color-danger-hover: #fd2727;
 }
 
 * {

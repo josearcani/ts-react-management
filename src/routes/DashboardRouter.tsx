@@ -6,6 +6,7 @@ import Sidebar from '../layouts/sidebar/Sidebar'
 import Clients from '../pages/clients/Clients'
 import Courses from '../pages/courses/Courses'
 import Dashboard from '../pages/dashboard/Dashboard'
+import Details from '../pages/details/Details'
 import Employees from '../pages/employees/Employees'
 import Membership from '../pages/membership/Membership'
 import Profile from '../pages/profile/Profile'
@@ -24,6 +25,8 @@ const DashboardRouter: React.FC = () => {
             <Route path='/:id' element={ <Profile /> }/>
             <Route path='/:id/cursos' element={ <Profile /> }/>
             <Route path='/:id/mensajes' element={ <Profile /> }/>
+            <Route path='/empleados/:id/detalles' element={ <Details /> }/>
+            <Route path='/clientes/:id/detalles' element={ <Details /> }/>
             <Route path='/empleados' element={ <Employees /> }/>
             <Route path='/clientes' element={ <Clients /> }/>
             <Route path='/cursos' element={ <Courses /> }/>

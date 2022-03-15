@@ -44,7 +44,7 @@ const Employees = () => {
       <div className="app__dashboard-row">
         <div className="app__dashboard-item">
           <Widget title="Tabla de Empleados">
-            <Table data={ emplData } />
+            <Table data={ emplData } isEmployee={ true } />
           </Widget>
         </div>
       </div>

@@ -1,7 +1,14 @@
 import React from 'react'
+import { GiMagnifyingGlass } from 'react-icons/gi'
 import { Link } from 'react-router-dom'
 
-const Table = ({ data }:any) => {
+const Table = ({ data, isEmployee }:any) => {
+  let path:string;
+  if (isEmployee){
+    path = 'empleados';
+  } else {
+    path = 'clientes';
+  }
   return (
     <>
       {/* <div>
@@ -22,6 +29,7 @@ const Table = ({ data }:any) => {
       <table className="app__dashboard-table">
         <thead>
           <tr>
+            <th>N°</th>
             <th>NOMBRE</th>
             <th>APELLIDO</th>
             <th>CORREO</th>
@@ -31,14 +39,15 @@ const Table = ({ data }:any) => {
         </thead>
         <tbody>
           {
-            data.rows.map((item: any) => {
+            data.rows.map((item: any, i:number) => {
               return (
                 <tr key={item.id}>
+                  <td>{i + 1}</td>
                   <td>{item.nombre}</td>
                   <td>{item.apellido}</td>
                   <td>{item.email}</td>
                   <td>{item.rol}</td>
-                  <td><Link to={`dashboard/${item.id}/detalle`}>edit</Link></td>
+                  <td><Link to={`/admin/${path}/${item.id}/detalles`}><GiMagnifyingGlass />Detalles</Link></td>
                 </tr>
               )
             })

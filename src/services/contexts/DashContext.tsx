@@ -20,6 +20,7 @@ export const initialState:DashState = {
   emplData: {},
   cliData: {},
   crsData: {},
+  activeData: {},
 };
 
 export const DashContext = createContext<DashContextInterface | null>(null);

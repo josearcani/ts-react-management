@@ -44,9 +44,14 @@ export const asyncActionHandlers: AsyncActionHandlers<Reducer<DashState, Action>
     return
     // return console.log(msg);
   },
-  GETONE: ({ dispatch }) => async () => {
-    console.log('GET ONE')
-    // dispatch({ type: types.logout })
+  GETONE: ({ dispatch }) => async ({ endpoint }) => {
+    const { data }:any = await fetchWithToken(endpoint);
+    dispatch({ type: types.dashItemActive, payload: data });
+    return
+  },
+  DELETEONE: ({ dispatch }) => async ({ endpoint }) => {
+    const { msg }:any = await fetchWithToken(endpoint, {}, 'DELETE');
+    console.log(msg);
     return
   }
 };

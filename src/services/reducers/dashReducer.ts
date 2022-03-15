@@ -10,16 +10,19 @@ export const dashReducer = (state: typeof initialState , action: Action):DashSta
       return {
         ...state,
         emplData: action.payload,
+        activeData: {},
       }
     case types.dashLoadCliData:
       return {
         ...state,
         cliData: action.payload,
+        activeData: {},
       }
     case types.dashLoadCrsData:
       return {
         ...state,
         crsData: action.payload,
+        activeData: {},
       }
     case types.dashStartLoader:
       return {
@@ -34,7 +37,8 @@ export const dashReducer = (state: typeof initialState , action: Action):DashSta
     case types.dashSetError:
       return {
         ...state,
-        msgError: action.payload
+        msgError: action.payload,
+        activeData: {},
       }
     case types.dashRemoveError:
       return {
@@ -56,12 +60,18 @@ export const dashReducer = (state: typeof initialState , action: Action):DashSta
         ...state,
         toggle: false
       }
+    case types.dashItemActive:
+      return {
+        ...state,
+        activeData: action.payload
+      }
     case types.dashClearData:
       return {
         ...state,
         emplData: {},
         cliData: {},
         crsData: {},
+        activeData: {},
       }
     default:
       return state

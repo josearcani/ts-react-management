@@ -27,7 +27,23 @@
   position: fixed;
 }
 
-.app__modal-form {
+/* .app__modal-form {
   display: flex;
   flex-direction: column;
+} */
+
+.app__modal-container {
+  display: flex;
+  flex-direction: row;
 }
+
+.app__input-section {
+  display: flex;
+}
+
+.app__input-section .app__input-container {
+  width: 50%;
+}
+/* .app__modal-row {
+  
+} */

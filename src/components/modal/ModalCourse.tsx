@@ -21,6 +21,18 @@ const ModalCourse = () => {
     dashDispatch({ type: types.dashCloseModal });
   }
 
+
+  // nombreCurso
+  // fechaIni
+  // fechaFin
+  // fechaFinDeMatricula
+  // maxMatriculados
+  // minMatriculados
+  // cursoIniciado => false
+  // cursoActivo => false
+  // horasTotales
+  // trainer  
+
   return (
     <ReactModal
       isOpen={toggle}
@@ -32,69 +44,123 @@ const ModalCourse = () => {
     >
       <form
         className="app__modal-form"
-        // onSubmit={handleSubmit}
+      // onSubmit={handleSubmit}
       >
         <h1>Crear curso</h1>
-        <div className="app__input-container">
-          <label className="app__input-label" htmlFor="firstname">Nombres</label>
-          <input
-            type="text"
-            id="firstname"
-            placeholder="Nombres"
-            autoComplete="off"
-            className="app__input input"
-            name="firstname"
-            // value={ user.firstname }
-            // onChange={handleChange('firstname')}
-          />
-          {/* <i className="fa fa-envelope"></i>
-          {errors.firstname && <span className="app__input--error">{errors.firstname}</span>} */}
+        <div className="app__modal-container">
+          <div className="app__modal-row">
+            <div className="app__input-container">
+              <label className="app__input-label" htmlFor="nombreCurso">Nombre del curso</label>
+              <input
+                type="text"
+                id="nombreCurso"
+                placeholder="Nombre del curso"
+                autoComplete="off"
+                className="app__input input"
+                name="nombreCurso"
+              // value={ user.firstname }
+              // onChange={handleChange('firstname')}
+              />
+              {/* <i className="fa fa-envelope"></i>
+            {errors.firstname && <span className="app__input--error">{errors.firstname}</span>} */}
+            </div>
+            <div className='app__input-section'>
+              <div className="app__input-container">
+                <label className="app__input-label" htmlFor="maxMatriculados">Participantes</label>
+                <input
+                  type="number"
+                  id="maxMatriculados"
+                  placeholder="Max"
+                  autoComplete="off"
+                  className="app__input input"
+                  name="maxMatriculados"
+                // value={user.lastname}
+                // onChange={handleChange('lastname')}
+                />
+                {/* <i className="fa fa-key"></i>
+              {errors.lastname && <span className="app__input--error">{errors.lastname}</span>} */}
+              </div>
+              <div className="app__input-container">
+                <label className="app__input-label" htmlFor="minMatriculados">Participantes</label>
+                <input
+                  type="number"
+                  id="minMatriculados"
+                  placeholder="Min"
+                  autoComplete="off"
+                  className="app__input input"
+                  name="minMatriculados"
+                // value={user.email}
+                // onChange={handleChange('email')}
+                />
+                {/* <i className="fa fa-key"></i>
+              {errors.email && <span className="app__input--error">{errors.email}</span>} */}
+              </div>
+              <div className="app__input-container">
+                <label className="app__input-label" htmlFor="horasTotales">Horas Totales</label>
+                <input
+                  type="number"
+                  id="horasTotales"
+                  placeholder="Horas totales"
+                  autoComplete="off"
+                  className="app__input input"
+                  name="horasTotales"
+                // value={user.email}
+                // onChange={handleChange('email')}
+                />
+                {/* <i className="fa fa-key"></i>
+              {errors.email && <span className="app__input--error">{errors.email}</span>} */}
+              </div>
+            </div>
+            <div className='app__input-section'>
+              <div className="app__input-container">
+                <label className="app__input-label" htmlFor="fechaIni">Fecha Inicio</label>
+                <input
+                  type="date"
+                  id="fechaIni"
+                  placeholder="Inicio"
+                  autoComplete="off"
+                  className="app__input input"
+                  name="fechaIni"
+                // value={user.password}
+                // onChange={handleChange('password')}
+                />
+                {/* <i className="fa fa-key"></i>
+              {errors.password && <span className="app__input--error">{errors.password}</span>} */}
+              </div>
+              <div className="app__input-container">
+                <label className="app__input-label" htmlFor="fechaFin">Fecha Fin</label>
+                <input
+                  type="date"
+                  id="fechaFin"
+                  placeholder="Final"
+                  autoComplete="off"
+                  className="app__input input"
+                  name="fechaFin"
+                // value={user.password}
+                // onChange={handleChange('password')}
+                />
+                {/* <i className="fa fa-key"></i>
+                {errors.password && <span className="app__input--error">{errors.password}</span>} */}
+              </div>
+            </div>
+            <div className="app__input-container">
+              <label className="app__input-label" htmlFor="trainer">Entrenador</label>
+              <input
+                type="text"
+                id="trainer"
+                placeholder="Entrenador"
+                autoComplete="off"
+                className="app__input input"
+                name="trainer"
+              // value={user.password}
+              // onChange={handleChange('password')}
+              />
+              {/* <i className="fa fa-key"></i>
+            {errors.password && <span className="app__input--error">{errors.password}</span>} */}
+            </div>
+          </div>
         </div>
-        <div className="app__input-container">
-          <label className="app__input-label" htmlFor="lastname">Apellidos</label>
-          <input
-            type="text"
-            id="lastname"
-            placeholder="Apellidos"
-            autoComplete="off"
-            className="app__input input"
-            name="lasname"
-            // value={user.lastname}
-            // onChange={handleChange('lastname')}
-          />
-          {/* <i className="fa fa-key"></i>
-          {errors.lastname && <span className="app__input--error">{errors.lastname}</span>} */}
-        </div>
-        <div className="app__input-container">
-          <label className="app__input-label" htmlFor="email">Correo</label>
-          <input
-            type="email"
-            id="email"
-            placeholder="Correo"
-            autoComplete="off"
-            className="app__input input"
-            name="email"
-            // value={user.email}
-            // onChange={handleChange('email')}
-          />
-          {/* <i className="fa fa-key"></i>
-          {errors.email && <span className="app__input--error">{errors.email}</span>} */}
-        </div>
-        <div className="app__input-container">
-          <label className="app__input-label" htmlFor="password">Contraseña <span>(secret)</span></label>
-          <input
-            type="password"
-            id="password"
-            placeholder="Contraseña"
-            autoComplete="off"
-            className="app__input input"
-            name="password"
-            // value={user.password}
-            // onChange={handleChange('password')}
-          />
-          {/* <i className="fa fa-key"></i>
-          {errors.password && <span className="app__input--error">{errors.password}</span>} */}
-        </div>
+
         <button
           className="custom__button"
           style={{ marginBottom: '.5rem' }}

@@ -1,10 +1,10 @@
 import React, { useContext } from 'react';
-import { RiUserAddLine } from 'react-icons/ri';
+import { RiAddCircleLine } from 'react-icons/ri';
 import DashContext, { DashContextInterface } from '../../services/contexts/DashContext';
 import { types } from '../../services/types/types';
 import './addNewFab.css';
 
-const AddNewFab = ({ isEmployee }:{ isEmployee:boolean }) => {
+const AddNewFab = ({ title }:{ title:string }) => {
 
   const { dashDispatch } = useContext(DashContext) as DashContextInterface;
 
@@ -13,12 +13,8 @@ const AddNewFab = ({ isEmployee }:{ isEmployee:boolean }) => {
       className="app__fab"
       onClick={ () => dashDispatch({ type: types.dashOpenModal })}
     >
-      <RiUserAddLine style={{ fontSize: 15 }} />
-      {
-        isEmployee
-          ? <span>Empleado</span>
-          : <span>Cliente</span>
-      }
+      <RiAddCircleLine style={{ fontSize: 15 }} />
+      <span>{ title }</span>
     </button>
   )
 }

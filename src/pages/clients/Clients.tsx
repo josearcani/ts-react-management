@@ -19,7 +19,7 @@ const Clients = () => {
   }
   return (
     <div className="app__dashboard">
-      <AddNewFab isEmployee={ false }/>
+      <AddNewFab title="Nuevo Cliente" />
       <h2 style={{ marginBottom: 15 }}>Clientes</h2>
       <div className="app__dashboard-row">
         <div className="app__dashboard-item">

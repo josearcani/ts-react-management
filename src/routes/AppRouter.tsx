@@ -1,5 +1,6 @@
 import React, { useContext, useEffect } from 'react'
 import { BrowserRouter, Navigate, Route, Routes } from 'react-router-dom'
+import Loader from '../components/loader/Loader'
 import Error from '../pages/error/Error'
 import Landing from '../pages/landing/Landing'
 import { AppContextInterface, AuthContext } from '../services/contexts/AuthContext'
@@ -19,7 +20,7 @@ const AppRouter:React.FC = () => {
   }, [verifyToken])
   
   if (user.checking) {
-    return <h1>Cargando.......</h1>
+    return <Loader />
   }
 
   return (

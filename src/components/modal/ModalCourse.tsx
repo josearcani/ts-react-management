@@ -21,7 +21,6 @@ const ModalCourse = () => {
     dashDispatch({ type: types.dashCloseModal });
   }
 
-
   // nombreCurso
   // fechaIni
   // fechaFin
@@ -31,7 +30,11 @@ const ModalCourse = () => {
   // cursoIniciado => false
   // cursoActivo => false
   // horasTotales
-  // trainer  
+  // trainer
+
+  // const handleSubmit = (e) => {
+  //   e.preventDefault;
+  // }
 
   return (
     <ReactModal
@@ -44,7 +47,7 @@ const ModalCourse = () => {
     >
       <form
         className="app__modal-form"
-      // onSubmit={handleSubmit}
+        // onSubmit={ () => console.log("Submit") }
       >
         <h1>Crear curso</h1>
         <div className="app__modal-container">
@@ -115,7 +118,7 @@ const ModalCourse = () => {
               <div className="app__input-container">
                 <label className="app__input-label" htmlFor="fechaIni">Fecha Inicio</label>
                 <input
-                  type="date"
+                  type="datetime-local"
                   id="fechaIni"
                   placeholder="Inicio"
                   autoComplete="off"
@@ -130,7 +133,7 @@ const ModalCourse = () => {
               <div className="app__input-container">
                 <label className="app__input-label" htmlFor="fechaFin">Fecha Fin</label>
                 <input
-                  type="date"
+                  type="datetime-local"
                   id="fechaFin"
                   placeholder="Final"
                   autoComplete="off"

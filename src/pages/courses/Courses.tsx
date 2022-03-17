@@ -1,5 +1,5 @@
-import React, { useContext, useEffect, useState } from 'react'
-import { RiRefreshLine, RiUserAddLine } from 'react-icons/ri';
+import React, { useContext, useEffect } from 'react'
+import { GiMagnifyingGlass } from 'react-icons/gi';
 import { Link } from 'react-router-dom';
 import AddNewFab from '../../components/addNewFab/AddNewFab';
 import Loader from '../../components/loader/Loader';
@@ -12,7 +12,6 @@ const Courses = () => {
   const { dash, dashDispatch } = useContext(DashContext) as DashContextInterface;
   const { crsData }:any = dash;
   const items = crsData.rows;
-  console.log(crsData);
   useEffect(() => {
     dashDispatch({ type: 'GETCRS', endpoint: 'cursos?limit=1000' });
   }, [])
@@ -75,7 +74,7 @@ const Courses = () => {
                       className="app__courses-btn"
                       to={`/admin/cursos/${item.id}/detalles`}
                     >
-                      <RiRefreshLine /> <span>Actualizar</span> 
+                      <GiMagnifyingGlass /> <span>Detalles</span> 
                     </Link>
                   </Widget>
                 </div>

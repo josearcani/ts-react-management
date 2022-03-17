@@ -7,6 +7,7 @@ import Clients from '../pages/clients/Clients'
 import Courses from '../pages/courses/Courses'
 import Dashboard from '../pages/dashboard/Dashboard'
 import Details from '../pages/details/Details'
+import DetailsCourse from '../pages/details/DetailsCourse'
 import Employees from '../pages/employees/Employees'
 import Membership from '../pages/membership/Membership'
 import Profile from '../pages/profile/Profile'
@@ -30,7 +31,7 @@ const DashboardRouter: React.FC = () => {
             <Route path='/empleados' element={ <Employees /> }/>
             <Route path='/clientes' element={ <Clients /> }/>
             <Route path='/cursos' element={ <Courses /> }/>
-            <Route path='/cursos/:id/detalles' element={ <Details /> }/>
+            <Route path='/cursos/:id/detalles' element={ <DetailsCourse /> }/>
             <Route path='/membresias' element={ <Membership /> }/>
             <Route path='/configuracion' element={ <Settings /> }/>
             <Route path='*' element={ <Navigate to="/auth/login" /> }/>

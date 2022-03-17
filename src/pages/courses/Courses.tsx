@@ -1,4 +1,4 @@
-import React, { useContext, useEffect } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import { RiRefreshLine, RiUserAddLine } from 'react-icons/ri';
 import { Link } from 'react-router-dom';
 import AddNewFab from '../../components/addNewFab/AddNewFab';
@@ -73,7 +73,7 @@ const Courses = () => {
                     </div>
                     <Link
                       className="app__courses-btn"
-                      to={`${id}`}
+                      to={`/admin/cursos/${item.id}/detalles`}
                     >
                       <RiRefreshLine /> <span>Actualizar</span> 
                     </Link>

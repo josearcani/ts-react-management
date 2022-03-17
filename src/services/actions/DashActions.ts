@@ -45,6 +45,7 @@ export const asyncActionHandlers: AsyncActionHandlers<Reducer<DashState, Action>
   GETONE: ({ dispatch }) => async ({ endpoint }) => {
     const { data }:any = await fetchWithToken(endpoint);
     dispatch({ type: types.dashItemActive, payload: data });
+    dispatch({ type: types.dashFinishLoader });
     return
   },
   POSTONE: ({ dispatch }) => async (payload:any) => {

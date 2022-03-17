@@ -34,7 +34,7 @@ const Courses = () => {
           </Widget>
         </div>
       </div>
-      <div className="app__dashboard-row">
+      {/* <div className="app__dashboard-row"> */}
           {
             items.map((item:any) => {
               const {
@@ -82,7 +82,7 @@ const Courses = () => {
               )
             })
           }
-      </div>
+      {/* </div> */}
       <ModalCourse />
     </div>
   )

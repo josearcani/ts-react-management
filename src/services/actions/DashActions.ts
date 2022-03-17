@@ -3,8 +3,6 @@ import { AsyncActionHandlers } from 'use-reducer-async';
 import { fetchWithToken } from '../helpers/fetch';
 import { Action, DashAsyncAction, DashState, types } from '../types/types';
 
-
-
 export const asyncActionHandlers: AsyncActionHandlers<Reducer<DashState, Action>, DashAsyncAction> = {
   GETEMPL: ({ dispatch }) => async ({ endpoint }) => {
     dispatch({ type: types.dashStartLoader });
@@ -47,6 +45,11 @@ export const asyncActionHandlers: AsyncActionHandlers<Reducer<DashState, Action>
   GETONE: ({ dispatch }) => async ({ endpoint }) => {
     const { data }:any = await fetchWithToken(endpoint);
     dispatch({ type: types.dashItemActive, payload: data });
+    return
+  },
+  POSTONE: ({ dispatch }) => async (payload:any) => {
+    const { msg }:any = await fetchWithToken('cursos', { ...payload }, 'POST');
+    console.log(msg);
     return
   },
   DELETEONE: ({ dispatch }) => async ({ endpoint }) => {

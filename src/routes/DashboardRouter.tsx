@@ -33,7 +33,7 @@ const DashboardRouter: React.FC = () => {
             <Route path='/cursos/:id' element={ <Profile /> }/>
             <Route path='/membresias' element={ <Membership /> }/>
             <Route path='/configuracion' element={ <Settings /> }/>
-            <Route path='*' element={ <Navigate to="/admin" /> }/>
+            <Route path='*' element={ <Navigate to="/auth/login" /> }/>
           </Routes>
         </main>
         <Footer />

@@ -11,7 +11,7 @@ interface User {
 
 const Login:React.FC = () => {
 
-  const { authDispatch } = useContext(AuthContext) as AppContextInterface;
+  const { authDispatch, user: authUser } = useContext(AuthContext) as AppContextInterface;
   const [rememberMe, setRememberMe] = useState<boolean>(false);
   const { handleSubmit, handleChange, data: user, errors } = useForm<User>({
     validations: {
@@ -82,7 +82,6 @@ const Login:React.FC = () => {
             name="remember"
             checked={rememberMe}
             onChange={(e) => setRememberMe(!e.target.checked)}
-            
             />
         </div>
         <button className="custom__button" style={{ marginBottom: '.5rem' }} type="submit">

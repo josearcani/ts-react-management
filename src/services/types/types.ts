@@ -2,6 +2,7 @@ export const types = {
   login: '[auth] Login',
   logout: '[auth] Logout',
   register: '[auth] Register',
+  msg: '[auth] Messsage',
 
   dashStartLoader: '[dash] StartLoader',
   dashFinishLoader: '[dash] FinishLoader',
@@ -31,6 +32,7 @@ export interface State {
   apellido: string | null
   email: string | null
   rol: string | null
+  msg: string | null
 }
 
 export interface DashState {

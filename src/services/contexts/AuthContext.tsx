@@ -26,6 +26,7 @@ const init = () => {
     nombre: null,
     apellido: null,
     email: null,
+    msg: ''
   };
 }
 

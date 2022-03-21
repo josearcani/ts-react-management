@@ -8,9 +8,11 @@ export const authReducer = (state: typeof initialState , action: Action):State =
   switch (action.type) {
     case types.login:
       return {
+        ...state,
         ...action.payload,
         logged: true,
         checking: false,
+        msg: '',
       }
     case types.logout:
       return {
@@ -20,7 +22,13 @@ export const authReducer = (state: typeof initialState , action: Action):State =
         email: null,
         nombre: null,
         apellido: null,
-        rol: null
+        rol: null,
+        msg: ''
+      }
+    case types.msg:
+      return {
+        ...state,
+        msg: action.payload.msg,
       }
     default:
       return state

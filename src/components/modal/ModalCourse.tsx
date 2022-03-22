@@ -87,7 +87,7 @@ const ModalCourse = () => {
       fechaFinDeMatricula: '',
       cursoIniciado: false,
       cursoActivo: false,
-      trainer: '',
+      trainer: 'John selected by default',
     },
     onSubmit: () => {
       dashDispatch({
@@ -101,7 +101,7 @@ const ModalCourse = () => {
         fechaFinDeMatricula: curso.fechaIni,
         cursoIniciado: false,
         cursoActivo: true,
-        trainer: '0de90fdb-b2ee-4885-a490-5e641c7e695a',
+        trainer: '702b0a15-3fcd-4ae1-8aaf-eed1392abe8e',
       })
       closeModal();
     },
@@ -145,7 +145,7 @@ const ModalCourse = () => {
             </div>
             <div className='app__input-section'>
               <div className="app__input-container">
-                <label className="app__input-label" htmlFor="maxMatriculados">Participantes</label>
+                <label className="app__input-label" htmlFor="maxMatriculados">Máximo</label>
                 <input
                   type="number"
                   id="maxMatriculados"
@@ -160,7 +160,7 @@ const ModalCourse = () => {
                 {errors.maxMatriculados && <span className="app__input--error">{errors.maxMatriculados}</span>}
               </div>
               <div className="app__input-container">
-                <label className="app__input-label" htmlFor="minMatriculados">Participantes</label>
+                <label className="app__input-label" htmlFor="minMatriculados">Mínimo</label>
                 <input
                   type="number"
                   id="minMatriculados"

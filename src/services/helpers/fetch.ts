@@ -1,5 +1,9 @@
-// const baseUrl = 'http://localhost:8000/api';
-const baseUrl = 'https://posgress-jarh.herokuapp.com/api';
+let baseUrl:string;
+if (process.env.NODE_ENV === 'development') {
+  baseUrl = 'http://localhost:8000/api';
+} else {
+  baseUrl = 'https://posgress-jarh.herokuapp.com/api';
+}
 
 export const fetchWithoutToken = async (endpoint:string, data?:Object, method:string = 'GET') => {
   const url = `${baseUrl}/${endpoint}`;

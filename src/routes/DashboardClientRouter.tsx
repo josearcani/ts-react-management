@@ -3,6 +3,7 @@ import { Route, Routes } from 'react-router-dom'
 import Footer from '../layouts/footer/Footer'
 import Header from '../layouts/header/Header'
 import Sidebar from '../layouts/sidebar/Sidebar'
+import CliCourses from '../pages/cliCourses/CliCourses'
 import CliDashboard from '../pages/cliDashboard/CliDashboard'
 import Membership from '../pages/membership/Membership'
 import Profile from '../pages/profile/Profile'
@@ -18,7 +19,7 @@ const DashboardClientRouter: React.FC = () => {
           <Routes>
             <Route path='/' element={ <CliDashboard /> }/>
             <Route path='/:id' element={ <Profile /> }/>
-            <Route path='/cursos' element={ <Profile /> }/>
+            <Route path='/cursos' element={ <CliCourses /> }/>
             <Route path='/:id/mensajes' element={ <Profile /> }/>
             <Route path='/membresias' element={ <Membership /> }/>
             <Route path='/configuracion' element={ <Settings /> }/>

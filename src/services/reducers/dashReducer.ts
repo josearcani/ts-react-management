@@ -2,7 +2,7 @@ import { initialState } from '../contexts/DashContext';
 import { types, DashState } from '../types/types';
 
 type Action = 
-  | { type: string; payload: string | null };
+  | { type: string; payload: any };
 
 export const dashReducer = (state: typeof initialState , action: Action):DashState => {
   switch (action.type) {

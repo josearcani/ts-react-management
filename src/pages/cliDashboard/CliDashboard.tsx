@@ -13,12 +13,12 @@ const CliDashboard = () => {
   useEffect(() => {
     dashDispatch({ type: 'GETONE', endpoint: `clientes/${user.nombre}/cursos` });
   }, [])
-
-  if (dash.checking == true || dash.activeData === undefined ) {
+  
+  if (dash.checking == true || Object.keys(dash.activeData).length === 0 ) {
     return (<Loader />)
   }
+
   const { cursos }:any = dash.activeData;
-  console.log(cursos)
   return (
     <div className="app__dashboard">
       <h2 style={{ marginBottom: 15 }}>Dashboard</h2>

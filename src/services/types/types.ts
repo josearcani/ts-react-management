@@ -42,7 +42,7 @@ export interface DashState {
   emplData: Object | null
   cliData: Object | null
   crsData: Object | null
-  activeData: Object | null
+  activeData: Object | {}
 }
 
 export type AsyncAction = {

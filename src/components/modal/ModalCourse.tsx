@@ -1,9 +1,11 @@
-import React, { useContext } from 'react'
+import React, { useContext, useState } from 'react'
 import ReactModal from 'react-modal';
 import { useForm } from '../../hooks/useForm';
 import DashContext, { DashContextInterface } from '../../services/contexts/DashContext';
 import { types } from '../../services/types/types';
-
+import Select from 'react-select';
+import AsyncSelect from 'react-select/async';
+import { fetchWithToken } from '../../services/helpers/fetch';
 const customStyles = {
   content: {
     top: '50%',
@@ -28,8 +30,32 @@ interface NewCourse {
   trainer: string;
 }
 
+interface ISelectOption {
+  value: string;
+  label: string;
+  isDisabled?: boolean
+}
+
 const ModalCourse = () => {
   const { dash: { toggle }, dashDispatch } = useContext(DashContext) as DashContextInterface;
+
+  const [selectedOption, setSelectedOption] = useState<ISelectOption>({ value: 'rojo', label: 'Selecciona un entrenador', isDisabled: true });
+
+  // react-select 
+  const filterData = (inputValue: any) => {
+    console.log(inputValue)
+    return inputValue.rows.map((item:any) => ({
+      value: item.id, label: `${item.nombre} ${item.apellido}`
+    }));
+  };
+  const promiseOptions = () =>
+  new Promise((resolve) => {
+    fetchWithToken('empleados?rol=TRAINER_ROL')
+    .then(({ data }) => resolve(filterData(data)))
+  });
+  const handleSelectChange = (selectedOption:any) => {
+    setSelectedOption(selectedOption)
+  }
 
   const { handleSubmit, handleChange, data: curso, errors } = useForm<NewCourse>({
     validations: {
@@ -65,16 +91,18 @@ const ModalCourse = () => {
         // },
       },
       fechaFin: {
-
+        // pattern: {
+        //   value: '^[\\w-\\.]+@([\\w-]+\\.)+[\\w-]{2,4}$',
+        //   message:
+        //     "Verifica que el correo nuevamente",
+        // },
       },
       fechaFinDeMatricula: {
-
-      },
-      trainer: {
-        pattern: {
-          value: '^[a-zA-Z].*[\s\.]*$',
-          message: 'Nombre del personañ',
-        },
+        // pattern: {
+        //   value: '^[\\w-\\.]+@([\\w-]+\\.)+[\\w-]{2,4}$',
+        //   message:
+        //     "Verifica que el correo nuevamente",
+        // },
       },
     },
     initialValues: {
@@ -87,7 +115,6 @@ const ModalCourse = () => {
       fechaFinDeMatricula: '',
       cursoIniciado: false,
       cursoActivo: false,
-      trainer: 'John selected by default',
     },
     onSubmit: () => {
       dashDispatch({
@@ -101,7 +128,7 @@ const ModalCourse = () => {
         fechaFinDeMatricula: curso.fechaIni,
         cursoIniciado: false,
         cursoActivo: true,
-        trainer: '702b0a15-3fcd-4ae1-8aaf-eed1392abe8e',
+        trainer: selectedOption.value,
       })
       closeModal();
     },
@@ -224,18 +251,13 @@ const ModalCourse = () => {
             </div>
             <div className="app__input-container">
               <label className="app__input-label" htmlFor="trainer">Entrenador</label>
-              <input
-                type="text"
-                id="trainer"
-                placeholder="Entrenador"
-                autoComplete="off"
-                className="app__input input"
-                name="trainer"
-                value={curso.trainer}
-                onChange={handleChange('trainer')}
+              <AsyncSelect
+                cacheOptions
+                defaultOptions
+                loadOptions={promiseOptions}
+                onChange={ handleSelectChange }
+                value={selectedOption}
               />
-              <i className="fa fa-key"></i>
-              {errors.trainer && <span className="app__input--error">{errors.trainer}</span>}
             </div>
           </div>
         </div>

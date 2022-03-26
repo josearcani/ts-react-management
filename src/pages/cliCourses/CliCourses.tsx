@@ -15,7 +15,6 @@ const CliCourses = () => {
     return (<Loader />)
   }
 
-  console.log(crsData);
   return (
     <div className="app__dashboard">
       {/* <AddNewFab title="Nuevo Curso" /> */}

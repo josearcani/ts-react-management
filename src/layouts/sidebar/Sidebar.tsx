@@ -20,7 +20,7 @@ const Sidebar = () => {
         <Link to={ home }>
       <header className="app__navbar-logo">
         <CgGym style={{ fontSize: 60 }} />
-        <span className="app__navbar-title">GYMN4CIO</span>
+        <span className="app__navbar-title">Tu Negocio</span>
       </header>
         </Link>
       <ul className="app__navbar-list">

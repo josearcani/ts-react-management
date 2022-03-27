@@ -11,13 +11,16 @@ const CliCourses = () => {
     dashDispatch({ type: 'GETCRS', endpoint: 'cursos?limit=1000' });
   }, [])
 
+  const handleSub = (e:any) => {
+    console.log(e)
+  }
+
   if (dash.checking == true || items === undefined) {
     return (<Loader />)
   }
 
   return (
     <div className="app__dashboard">
-      {/* <AddNewFab title="Nuevo Curso" /> */}
       <h2 style={{ marginBottom: 15 }}>Cursos</h2>
       <div className="app__dashboard-row">
         <div className="app__dashboard-item">
@@ -64,9 +67,12 @@ const CliCourses = () => {
                 <div className="app__courses-instructor">
                   <p>Instructor: {empleado.nombre} {empleado.apellido}</p>
                 </div>
-                <button>
+                <button
+                  className="app__courses-btn"
+                  onClick={ () => handleSub(item.id)}
+                >
                   Inscribirse
-                </button>
+                </button>  
               </Widget>
             </div>
           )

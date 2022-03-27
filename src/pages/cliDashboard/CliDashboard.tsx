@@ -1,13 +1,12 @@
 import React, { useContext, useEffect } from 'react'
-import Widget from '../../components/widget/Widget'
+import { Loader, Widget } from '../../components';
 import { AppContextInterface, AuthContext } from '../../services/contexts/AuthContext';
-
 import userImg from "../../assets/images/user.svg";
 import DashContext, { DashContextInterface } from '../../services/contexts/DashContext';
-import Loader from '../../components/loader/Loader';
+
 const CliDashboard = () => {
 
-  const { authDispatch, user } = useContext(AuthContext) as AppContextInterface;
+  const { user } = useContext(AuthContext) as AppContextInterface;
   const { dash, dashDispatch } = useContext(DashContext) as DashContextInterface;
 
   useEffect(() => {

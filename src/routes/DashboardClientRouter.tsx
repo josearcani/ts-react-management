@@ -1,13 +1,7 @@
 import React from 'react'
-import { Route, Routes } from 'react-router-dom'
-import Footer from '../layouts/footer/Footer'
-import Header from '../layouts/header/Header'
-import Sidebar from '../layouts/sidebar/Sidebar'
-import CliCourses from '../pages/cliCourses/CliCourses'
-import CliDashboard from '../pages/cliDashboard/CliDashboard'
-import Membership from '../pages/membership/Membership'
-import Profile from '../pages/profile/Profile'
-import Settings from '../pages/settings/Settings'
+import { Navigate, Route, Routes } from 'react-router-dom'
+import { Footer, Header, Sidebar } from '../layouts'
+import { CliDashboard, CliCourses, Membership, Profile, Settings } from '../pages'
 
 const DashboardClientRouter: React.FC = () => {
   return (
@@ -23,7 +17,7 @@ const DashboardClientRouter: React.FC = () => {
             <Route path='/:id/mensajes' element={ <Profile /> }/>
             <Route path='/membresias' element={ <Membership /> }/>
             <Route path='/configuracion' element={ <Settings /> }/>
-            {/* <Route path='*' element={ <Navigate to="/dashboard" /> }/> */}
+            <Route path='*' element={ <Navigate to="/cliente" /> }/>
           </Routes>
         </main>
         <Footer />

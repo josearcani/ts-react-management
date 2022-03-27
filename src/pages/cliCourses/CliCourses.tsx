@@ -1,7 +1,6 @@
 import React, { useContext, useEffect } from 'react'
 import Swal from 'sweetalert2';
-import Loader from '../../components/loader/Loader';
-import Widget from '../../components/widget/Widget';
+import { Loader, Widget } from '../../components';
 import DashContext, { DashContextInterface } from '../../services/contexts/DashContext';
 import { fetchWithToken } from '../../services/helpers/fetch';
 

@@ -1,9 +1,5 @@
 import React, { useContext, useEffect } from 'react'
-import AddNewFab from '../../components/addNewFab/AddNewFab';
-import Loader from '../../components/loader/Loader';
-import Modal from '../../components/modal/Modal';
-import Table from '../../components/table/Table';
-import Widget from '../../components/widget/Widget'
+import { AddNewFab, Loader, Modal, Table, Widget } from '../../components'
 import DashContext, { DashContextInterface } from '../../services/contexts/DashContext';
 import { itemCounter } from '../../services/helpers/itemsCount';
 import './employees.css';

@@ -1,5 +1,5 @@
 import React from 'react'
-import Widget from '../../components/widget/Widget'
+import { Widget } from '../../components'
 
 const Settings = () => {
   return (

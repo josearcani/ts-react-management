@@ -1,10 +1,7 @@
 import React, { useContext, useEffect } from 'react'
 import { GiMagnifyingGlass } from 'react-icons/gi';
 import { Link } from 'react-router-dom';
-import AddNewFab from '../../components/addNewFab/AddNewFab';
-import Loader from '../../components/loader/Loader';
-import ModalCourse from '../../components/modal/ModalCourse';
-import Widget from '../../components/widget/Widget'
+import { AddNewFab, Loader, ModalCourse, Widget } from '../../components';
 import DashContext, { DashContextInterface } from '../../services/contexts/DashContext';
 import './courses.css';
 

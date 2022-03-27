@@ -1,9 +1,7 @@
 import React, { useContext, useEffect, useState } from 'react'
 import { RiArrowGoBackFill } from 'react-icons/ri';
 import { useLocation, useNavigate } from 'react-router-dom';
-import Loader from '../../components/loader/Loader';
-import DeleteModal from '../../components/modal/DeleteModal';
-import Widget from '../../components/widget/Widget'
+import { Loader, DeleteModal, Widget } from '../../components'
 import DashContext, { DashContextInterface } from '../../services/contexts/DashContext';
 
 const Details = () => {

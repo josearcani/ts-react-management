@@ -1,4 +1,5 @@
 import React, { createContext, Reducer } from 'react'
+import Swal from 'sweetalert2';
 import { AsyncActionHandlers } from 'use-reducer-async';
 import { fetchWithToken } from '../helpers/fetch';
 import { Action, DashAsyncAction, DashState, types } from '../types/types';
@@ -53,8 +54,13 @@ export const asyncActionHandlers: AsyncActionHandlers<Reducer<DashState, Action>
     return
   },
   POSTONE: ({ dispatch }) => async (payload:any) => {
-    const { msg }:any = await fetchWithToken('cursos', { ...payload }, 'POST');
-    console.log(msg);
+    const { msg, errors }:any = await fetchWithToken('cursos', { ...payload }, 'POST');
+    if (errors) {
+      Swal.fire('Error', 'Se requiere completar todos los espacios', 'error');
+      console.error(errors);
+    } else {
+      Swal.fire('Éxito', msg, 'success');
+    }
     return
   },
   DELETEONE: ({ dispatch }) => async ({ endpoint }) => {

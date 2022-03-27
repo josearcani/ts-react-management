@@ -1,7 +1,9 @@
 import React, { useContext, useEffect } from 'react'
+import Swal from 'sweetalert2';
 import Loader from '../../components/loader/Loader';
 import Widget from '../../components/widget/Widget';
 import DashContext, { DashContextInterface } from '../../services/contexts/DashContext';
+import { fetchWithToken } from '../../services/helpers/fetch';
 
 const CliCourses = () => {
   const { dash, dashDispatch } = useContext(DashContext) as DashContextInterface;
@@ -11,8 +13,13 @@ const CliCourses = () => {
     dashDispatch({ type: 'GETCRS', endpoint: 'cursos?limit=1000' });
   }, [])
 
-  const handleSub = (e:any) => {
-    console.log(e)
+  const handleSub = (id:string) => {
+    fetchWithToken(`cursos/inscribirse/${id}`, {}, 'POST')
+    .then(data => {
+      const { msg } = data;
+      Swal.fire('Éxito', msg, 'success');
+    })
+    .catch(err => console.log(err))
   }
 
   if (dash.checking == true || items === undefined) {
